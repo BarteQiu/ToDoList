@@ -18,7 +18,6 @@ function App() {
   }
 
 
-
   return (
     <main className='bg-[#0c0c0c] w-full h-screen flex flex-col justify-center items-center text-white'>
       <input type="text" value={text} onChange={(e) => setText(e.target.value)}
@@ -26,6 +25,10 @@ function App() {
 
       <button onClick={AddTask}
       className='border border-white cursor-pointer'>Add task</button>
+
+      {tasks.map((task) => (
+        <div>{task.text}</div>
+      ))}
 
     </main>
   )
