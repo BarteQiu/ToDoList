@@ -17,6 +17,10 @@ function App() {
     setTasks([...tasks, {id: Date.now(), text: text}])
   }
 
+  const DeleteTask = (id: number) => {
+    setTasks(tasks.filter((e) => e.id !== id))
+  }
+
 
   return (
     <main className='bg-[#0c0c0c] w-full h-screen flex flex-col justify-center items-center text-white'>
@@ -27,7 +31,10 @@ function App() {
       className='border border-white cursor-pointer'>Add task</button>
 
       {tasks.map((task) => (
-        <div>{task.text}</div>
+        <div>
+          {task.text}
+          <button onClick={() => DeleteTask(task.id)} className='cursor-pointer'>Delete</button>
+        </div>
       ))}
 
     </main>
