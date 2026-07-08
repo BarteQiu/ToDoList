@@ -1,77 +1,40 @@
-# React + TypeScript + Vite
+# 📝 Advanced Todo Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A highly interactive, performant, and beautifully designed Todo application built using **React**, **TypeScript**, and **Tailwind CSS**. This project demonstrates scalable state management, strict type safety, real-time filtering, data persistence, and inline task architecture.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+[Insert your deployment link here - e.g., Vercel / Netlify]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* **⚡ CRUD Operations:** Add, complete, inline-edit, and delete tasks seamlessly.
+* **💾 LocalStorage Persistence:** Tasks are automatically synchronized with the browser's local storage using React hooks (`useEffect`).
+* **🔍 Real-Time Search & Debounce-ready:** Instant multi-character search functionality filtering through task bodies.
+* **🏷️ Categorization & Tags:** Group tasks by context (`Work`, `Home`, `All`).
+* **🔥 Priority-Based Sorting:** Custom algorithmic sorting where tasks are arranged automatically based on weight values (`High` > `Mid` > `Low`).
+* **🔀 Layout Toggling:** Switch dynamically between list view (`flex`) and card view (`grid`) with full state support.
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack & Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Frontend Library:** React (Functional Components & Hooks)
+* **Type Safety:** TypeScript (Strict interface definitions for data models and component props)
+* **Styling:** Tailwind CSS
+* **Icons:** React Icons (`io5`)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Key Code Architecture Highlights
+* **State-driven Conditional Rendering:** Handles modal UI logic for task creation and contextual state changes for inline modifications.
+* **Strict Typing:** Custom interfaces defining the strict schema of `Task` types, eliminating the use of `any`.
+* **Algorithmic Weighting:** Uses a structured lookup object (`piorityWeight`) to handle the sorting arrays before mapping data to the UI.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+```typescript
+interface Task {
+  id: number;
+  text: string;
+  isCompleted: boolean;
+  piority: "Low" | "Mid" | "High";
+  tags: "All" | "Work" | "Home";
+}
