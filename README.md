@@ -2,9 +2,6 @@
 
 A highly interactive, performant, and beautifully designed Todo application built using **React**, **TypeScript**, and **Tailwind CSS**. This project demonstrates scalable state management, strict type safety, real-time filtering, data persistence, and inline task architecture.
 
-## 🚀 Live Demo
-[Insert your deployment link here - e.g., Vercel / Netlify]
-
 ---
 
 ## ✨ Features
